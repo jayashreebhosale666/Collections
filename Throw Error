@@ -1,0 +1,16 @@
+ public class A {
+ static void test() throws Error {
+ if (true) throw new AssertionError();
+ System.out.print("test ");
+ }
+ public static void main(String[] args) {
+ try { test(); }
+ catch (Exception ex) { System.out.print("exception "); }
+ System.out.print("end ");
+ }
+ }
+ $javac A.java
+$java -Xmx128M -Xms16M A
+Exception in thread "main" java.lang.AssertionError
+	at A.test(A.java:3)
+	at A.main(A.java:7)
